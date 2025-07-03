@@ -2,33 +2,146 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>In Tune Music Therapy</title>
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & basics */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #1a0f1f; /* Deep muted purple */
+      color: #f2f2f2;
+      display: flex;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 200px;
+      background-color: #1a0f1f;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: #f2f2f2;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #c29fff;
+    }
+
+    main {
+      margin-left: 200px;
+      padding: 2rem;
+      width: calc(100% - 200px);
+
+      height: 100vh; /* full viewport height */
+      overflow-y: scroll; /* enable vertical scrolling */
+      scroll-snap-type: y mandatory; /* enable scroll snapping */
+    }
+
+    section {
+      min-height: 100vh; /* full screen height */
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      scroll-snap-align: start; /* snap to start of section */
+    }
+
+    h1, h2 {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      max-width: 600px;
+      line-height: 1.6;
+    }
+blockquote {
+  border-left: 4px solid #c29fff;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #e5d6ff;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+section > * + * {
+  margin-top: 1.5rem;
+}
+  </style>
 </head>
 <body>
-  <header>
-    <h1>In Tune Music Therapy</h1>
-    <nav>
-      <a href="#about">About</a> |
-      <a href="#services">Services</a> |
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#mission">Mission & Vision</a>
+    <a href="#about">About Me</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#specialties">Specialties</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>Compassionate music therapy for adults facing mental health challenges.</p>
-  </section>
+  <main>
+    <section id="hero">
+      <h1>In Tune Music Therapy</h1>
+      <p>Beyond words, in tune with your authentic self.</p>
+    </section>
 
-  <section id="services">
-    <h2>Services</h2>
-    <p>Individual sessions, group therapy, and creative workshops.</p>
-  </section>
+    <section id="mission">
+      <h2>Mission & Vision</h2>
+      <p>Our mission is to provide compassionate, creative, and affirming music therapy services to support mental health and well-being. We envision a world where all people can find emotional resonance and transformation through music.</p>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: makenzie@intunemt.com</p>
-  </section>
+<section id="about">
+  <h2>About Me</h2>
+
+  <p>Hi, I'm Makenzie</p>
+
+  <p>I'm a board-certified music therapist passionate about supporting those with mental health needs.</p>
+
+  <p>My approach is warm, intuitive, and client-centered. My style is validating but direct. I can be humorous and serious, nurturing and demanding, knowledgeable and curious.</p>
+
+  <blockquote>
+    I became a music therapist because of the music, and I've stayed a music therapist because of the therapist I've become.
+  </blockquote>
+
+  <p>I've held board certification in music therapy for 15 years and anchor in concepts of Dialectical Behavior Therapy. I've spent years giving compassionate treatment to those in mental health crises working at high levels of care — inpatient, partial hospitalization, and intensive outpatient.</p>
+
+  <p>When I'm not in session I am planning my next camping trip, figuring out how to DIY my house, or enjoying a meal with my partner and his dog.</p>
+</section>
+
+    <section id="how-it-works">
+      <h2>How Does Music Therapy Work?</h2>
+      <p>Music therapy Most are very curious when they learn about music therapy about “how it works”.  Do I have to be a musician?  Do we just play music?  When do I talk about my problems? Music Therapy has a very concise definition according to the American Music Therapy Association.  It mentions a therapeutic relationship, clinical/evidenced base use of music, credentialed professionals, goals… its a lot.  What does it boil down to?  I use music to achieve Non musical goals.  Musical goals would be things like learning how to play an instrument, the difference between augmented sixth chords, what effect Beethoven's deafness had on his contribution to romantic music… All fine and dandy, but non musical goals like expressing emotion safely, understanding patterns of behavior, reducing symptoms of depression/anxiety etc, navigating trauma… those are what drives it all for me as a music therapist.  Best of all, you don't need to even be able to carry a tune in a bucket!  My training has prepared me for this.   </p>
+    </section>
+
+    <section id="specialties">
+      <h2>What I Specialize In</h2>
+      <p>What's your niche? <br><br>Broadly, my niche is using music therapy for mental health.  <br>However, I've found some true passion areas in my career up to this point- passion areas that may not be well understood by others. I have several intersectional identities and  I seem to keep gathering the knowledge that I don't have all the knowledge.  I am LGBTQ+ affirming, ethical non-monogomy affirming and health at every size/anti diet culture aligned.  Rest assured you won't have to start at the basics and educate me on these- and at the same time, I'm poised to educate myself even more on the nuance.   <br><br>The overintellectualizer <br>Have you ever had a provider say “wow you're so self aware! You seem to have things figured out!” yet your life is in shambles?  Lets work together - your self awareness is an asset, and the music will accompany and augment the journey to your authentic self where life is doable and maybe even thriving. </p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact / Call to Action</h2>
+      <p>Ready to explore how music can support your mental health? Reach out today for a free consultation.</p>
+      <p>Email: <a href="makenzie@intunemt.com" style="color:#c29fff">Makenzie@intunemt.com</a></p>
+    </section>
+  </main>
 </body>
 </html>
