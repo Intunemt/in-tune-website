@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | In Tune Music Therapy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Quicksand&display=swap" rel="stylesheet" />
+  <link rel="icon" href="ITMTFavicon.png" type="image/png" />
+  <style>
+    :root {
+      --cream: #fbf5ec;
+      --purple: #3A2A5D;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--cream);
+      color: var(--purple);
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(
+        135deg,
+        #ffdce5,
+        #ffeacc,
+        #fffccc,
+        #ccf4e2,
+        #cce4ff,
+        #e1ccff,
+        #ffdce5
+      );
+      background-size: 300% 300%;
+      animation: rainbowShift 30s ease infinite;
+
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    @keyframes rainbowFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero-logo {
+      width: 100%;
+      max-width: 1000px;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      .hero-logo {
+        max-width: 180px;
+      }
+    }
+
+    .logo-container {
+      position: relative;
+      width: 150px;
+      height: 50px;
+      overflow: hidden;
+    }
+
+    .logo-container .logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .logo-container .hover {
+      opacity: 0;              /* Start hidden */
+      transform: translateY(0);
+      z-index: 2;
+    }
+
+    .logo-container .default {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .logo-container:hover .default {
+      opacity: 0;
+    }
+
+    .logo-container:hover .hover {
+      opacity: 1;
+    }
+    .site-title h3 {
+        Margin:0;
+        font-family: 'Cinzel', serif;
+        color:#3A2A5D
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* or flex-start if no nav items on the right */
+      padding: 1rem 2rem;
+    }
+
+    .logo-img {
+      height: auto;
+      width: 100%;
+      max-width: 200px; /* adjust as needed for gum-stick size */
+      display: block;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+    }
+
+    .logo-link {
+      display: inline-block;
+    }
+
+    @media (max-width: 768px) {
+      .logo-img {
+        max-width: 180px;
+      }
+    }
+
+    .nav-wrapper {
+      Flex:1;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav{
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color:#FBF6EC;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Cinzel', serif;
+    }
+
+    header nav a {
+      font-family: 'Cinzel', serif;
+      color: #3A2A5D;
+      margin-left: 2rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover {
+      color: #8F8389;
+    }
+
+    main {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1, h2 {
+      font-family: 'Cinzel', serif;
+      color: var(--purple);
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #6c5e7f;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <img src="musicnotelotus.svg" alt="In Tune Logo" class="logo default" />
+      <img src="Intunelogowords.svg" alt="In Tune Logo Hover" class="logo hover" />
+    </div>
+    <div class="nav-wrapper">
+      <nav>
+        <a href="#hero">Home</a>
+        <a href="#services">Services</a>
+        <a href="#meet">Meet Makenzie</a>
+        <a href="#why">Why Music Therapy</a>
+        <a href="blog.html">Blog</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main><h1>Services</h1></main>
+
+  <footer>
+    &copy; 2025 In Tune Music Therapy. All rights reserved.
+  </footer>
+
+</body>
+</html>
