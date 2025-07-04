@@ -108,7 +108,7 @@ header {
 
 @media (max-width: 768px) {
   .hero-logo {
-    max-width: 180px;
+    max-width: 600px;
   }
 }
 
@@ -662,34 +662,69 @@ header {
 }
 
 .nav-wrapper {
-  Flex:1;
+  flex: 1;
   display: flex;
   justify-content: center;
 }
 
-nav{
+nav {
   display: flex;
   gap: 2rem;
 }
 
 nav a {
-  color:#FBF6EC;
+  color: #FBF6EC;
   text-decoration: none;
   font-weight: 600;
   font-family: 'Cinzel', serif;
 }
 
 header nav a {
-  font-family: 'Cinzel', serif;
   color: #3A2A5D;
   margin-left: 2rem;
-  text-decoration: none;
-  font-weight: 600;
   transition: color 0.3s;
 }
 
 header nav a:hover {
   color: #8F8389;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #3A2A5D;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-wrapper {
+    display: none;
+    flex-direction: column;
+    background-color: #FBF6EC;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .nav-toggle:checked + .hamburger + .nav-wrapper {
+    display: flex;
+  }
+
+  nav a {
+    margin: 0.5rem 0;
+    color: #3A2A5D; /* optional override for mobile */
+  }
 }
 
 main {
