@@ -117,6 +117,7 @@ header {
   width: 150px;
   height: 60px;
   overflow: hidden;
+  display: block;
 }
 
 .logo-container img {
@@ -147,6 +148,38 @@ header {
 
 .logo-container:hover .hover {
   opacity: 1;
+}
+
+.logo-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.logo-container {
+  display: block;
+}
+
+.logo-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .logo-container {
+    display: none;
+  }
+
+  .logo-mobile {
+    display: block;
+    width: 150px; 
+    height: auto;
+  }
+}
+
+.logo-mobile img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
 }
 
 .why-music-therapy {
@@ -534,22 +567,14 @@ header {
   align-items: center;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .meet-image img {
   width: 100%;
-  max-width: 1000px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 650px;   /* max size */
+  aspect-ratio: 1 / 1; /* keeps it square */
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: block;
 }
 
 .meet-text {
