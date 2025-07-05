@@ -569,8 +569,8 @@ header {
 
 .meet-image img {
   width: 100%;
-  max-width: 650px;   /* max size */
-  aspect-ratio: 1 / 1; /* keeps it square */
+  max-width: 500px;
+  aspect-ratio: 1 / 1; 
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
