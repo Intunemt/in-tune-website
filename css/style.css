@@ -633,7 +633,8 @@ header {
 .nav-wrapper {
   flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: space-between; 
+  align-items: center; 
 }
 
 nav {
@@ -694,6 +695,18 @@ header nav a:hover {
     margin: 0.5rem 0;
     color: #3A2A5D; /* optional override for mobile */
   }
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  gap: 2rem; /* space between links */
+}
+
+.logo-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2rem; /* optional spacing between logo and links */
 }
 
 main {
