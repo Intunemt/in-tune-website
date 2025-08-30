@@ -382,159 +382,128 @@ header {
   line-height: 1.4;
 }
 
-.services-section {
-  background-color: #FBF6EC;
-  padding: 4rem 2rem;
+.services-main {
   display: flex;
-  justify-content: center;
-}
-
-.services-container {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 2000px;
-  width: 100%;
-  align-items: flex-start;
-  gap: 3rem;
-}
-
-.services-image,
-.services-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .services-image img {
   width: 100%;
   height: auto;
-  border-radius: 12px;
   object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .services-text {
-  color: #3A2A5D;
-  padding: 1rem;
-  text-align: left;
+  flex: 1;
+  text-align: left; /* Justify heading left */
 }
 
 .services-text h1 {
-  font-family: 'Cinzel', serif;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
-.services-text p {
-  line-height: 1.6;
-  margin-bottom: 2rem;
+/* Full width heading */
+.services-extras {
+  text-align: center;
+  margin: 3rem 0 2rem;
 }
 
+/* Services Subgrid */
 .services-subgrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
 }
 
 .service-card {
+  width: 300px;
+  perspective: 1000px;
+}
+
+.card-inner {
   position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  height: 240px;
-  cursor: pointer;
+  width: 100%;
+  height: 250px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
 }
 
-.learn-more-btn {
-  padding: 0.5rem 1rem;
-  background-color: #3A2A5D;
-  color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
+.card-inner:hover {
+  transform: rotateY(180deg);
 }
 
-.learn-more-btn:hover {
-  background-color: #5b3f82;
-}
-
-.service-card:hover .card-front {
-  transform: translateY(-100%);
-}
-
-.service-card:hover .card-back {
-  transform: translateY(0);
-}
-
-@media (max-width: 768px) {
-  .services-subgrid {
-    grid-template-columns: 1fr;
-  }
-
-  .card-front h2,
-  .card-back h2,
-  .card-back p {
-    text-align: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .services-container {
-    flex-direction: column;
-  }
-
-  .services-text {
-    align-items: center;
-    text-align: center;
-  }
-
-  .services-subgrid {
-    grid-template-columns: 1fr;
-  }
-
-  .card-front h2,
-  .card-back h2,
-  .card-back p {
-    text-align: center;
-  }
-}
-
-.services-text,
-.services-image {
-  flex: 1;
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.services-text {
-  flex-direction: column;
-  text-align: left;
-  color:#3A2A5D;
+  color: #fff;
+  text-align: center;
   padding: 1rem;
-  align-items: flex-start;
-}
-
-.services-text p {
-  line-height: 1.6;
-  max-width: 1000px;
-}
-
-.services-image img {
-  width:100%;
-  max-width: 1000px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.services-extras {
-  width: 100%;
+.card-front {
+  background-size: cover;
+  background-position: center;
+}
+
+.card-back {
+  background: rgba(0, 0, 0, 0.8);
+  transform: rotateY(180deg);
+}
+
+/* Mission & Vision Cards */
+.mission-vision-grid {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.mv-card {
+  background: #3A2A5D; /* Dark purple */
+  color: #FBF6EC; /* Cream text */
+  width: 300px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.mv-card h2 {
+  padding: 1rem;
+  font-size: 1.8rem;
+}
+
+.mv-slide {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #3A2A5D;
+  color: #fbf6ec;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  transition: bottom 0.5s ease-in-out;
+}
+
+.mv-card:hover .mv-slide {
+  bottom: 0;
 }
 
 .subheading {
@@ -813,4 +782,122 @@ footer {
   padding: 2rem;
   font-size: 0.9rem;
   color: #6c5e7f;
+}
+
+
+/* Services Main (50/50 layout) */
+.services-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.services-image, .services-text {
+  flex: 1 1 50%;
+}
+
+.services-text {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Also Offering Section */
+#also-offering {
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}
+
+.subheading.left-align {
+  text-align: left;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.service-containers {
+  display: flex;
+  gap: 2rem;
+}
+
+.services-subgrid,
+.mission-vision-grid {
+  flex: 1 1 50%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .services-main {
+    flex-direction: column;
+  }
+  .service-containers {
+    flex-direction: column;
+  }
+}
+
+
+
+/* Mission/Vision cards inside Services text */
+.mission-vision-cards {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.mission-vision-cards .mv-card {
+  background: #4b2c61;
+  color: #f5f0e6;
+  flex: 1 1 50%;
+  height: 200px;
+  position: relative;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.mission-vision-cards .mv-slide {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #4b2c61;
+  color: #f5f0e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  transition: bottom 0.5s ease-in-out;
+}
+
+.mission-vision-cards .mv-card:hover .mv-slide {
+  bottom: 0;
+}
+
+/* Also Offering wide cards */
+.wide-cards {
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.wide-cards .service-card {
+  flex: 1;
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  .mission-vision-cards {
+    flex-direction: column;
+  }
+  .wide-cards {
+    flex-direction: column;
+    align-items: center;
+  }
 }
