@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       },
-      { threshold: 0 } // triggers as soon as any part of hero leaves viewport
+      { threshold: 0.5 } // triggers as soon as any part of hero leaves viewport
     );
 
     observer.observe(hero);
