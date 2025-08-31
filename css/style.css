@@ -40,7 +40,7 @@ h1 {
 
 h2 {
   font-size: 1.75rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 h3 {
@@ -76,6 +76,7 @@ section {
   padding-top: 80px;
   scroll-snap-align: start;
   box-sizing: border-box;
+  border: dashed red;
 }
 
 section > * + * {
@@ -83,6 +84,8 @@ section > * + * {
 }
 
 #hero {
+  position: relative;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,6 +97,18 @@ section > * + * {
   0% {background-position: 0% 50%;}
   50% {background-position: 100% 50%;}
   100% {background-position: 0% 50%;}
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* main content centered */
+  align-items: center;
+  height: 100%;
+}
+
+.hero-spacer {
+  flex: 1;                 /* pushes the subheading to the bottom */
 }
 
 header {
@@ -125,6 +140,24 @@ header {
   width: 100%;
   max-width: 600px;
   height: auto;
+  margin-bottom: 1rem;
+}
+
+.hero-heading {
+  font-size: 2 rem;        /* adjust to taste */
+  color: #3A2A5D;
+  margin: 0;
+  font-weight: 600;
+}
+
+.hero-subheading {
+  position: absolute;
+  bottom: 4rem;             /* distance from bottom of viewport */
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #3A2A5D;
+  opacity: 0.7;
 }
 
 @media (max-width: 768px) {
@@ -206,17 +239,6 @@ header {
 html {
   scroll-padding-top: 80px;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 .site-title h3 {
     Margin:0;
@@ -319,31 +341,6 @@ nav a:hover {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .services-main {
   display: flex;
   gap: 2rem;
@@ -355,13 +352,14 @@ nav a:hover {
 .services-image {
   flex: 1 1 50%;
   max-width: 50%;
-  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  min-height: 500px;
 }
 
 .services-image img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
   border-radius: 12px;
 }
 
@@ -396,10 +394,15 @@ nav a:hover {
 .service-card {
   flex: 1 1 50%;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 12px;
   height: 250px;
   cursor: pointer;
+  transition: box-shadwo 0.3s ease-in-out;
+}
+
+.service-card:hover {
+  box-shadow: 0 0 14px rgba(58,42,93,0.4), 0 0 24px rgba(58,42,93,0.2);
 }
 
 .card-front {
@@ -433,7 +436,7 @@ nav a:hover {
   justify-content: center;
   align-items: center;
   transition: transform 0.5s ease-in-out;
-  background-color: rgba(251, 246, 236, 0.95);
+  background-color: #FBF6EC;
   color: #3A2A5D;
   flex-direction: column;
   padding: 1rem;
@@ -441,7 +444,7 @@ nav a:hover {
   z-index: 2;
   transform: translateY(100%);
   border: 2px solid transparent; 
-  border-radius: 8 px;
+  border-radius: 8px;
 }
 
 .service-card:hover .card-front {
@@ -451,7 +454,6 @@ nav a:hover {
 .service-card:hover .card-back {
   transform: translateY(0);
   bottom: 0;
-  border: 2px solid #ccc;
 }
 
 .card-back h2 {
@@ -523,13 +525,6 @@ nav a:hover {
     font-weight: 600;
   }
 }
-
-
-
-
-
-
-
 
 #meet {
   min-height: 100vh; /* full viewport height */
@@ -603,7 +598,7 @@ nav a:hover {
   background: #4b2c61;
   color: #FBF6EC;
   text-align: center;
-  padding: 0rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -642,19 +637,6 @@ nav a:hover {
     max-width: 100%;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .why-music-therapy {
   background-color: #fbf6ec;
@@ -740,7 +722,7 @@ nav a:hover {
 }
 
 .card-description {
-  font-family: serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 0.9rem;
   margin-top: 1rem;
   opacity: 0;
@@ -850,21 +832,6 @@ nav a:hover {
   line-height: 1.4;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .contact-section {
   padding: 4rem 2rem;
   background-color: #fbf6ec;
@@ -926,25 +893,6 @@ nav a:hover {
     max-width: 100%;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 footer {
   text-align: center;
