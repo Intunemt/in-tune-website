@@ -24,3 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(hero);
   }
 });
+
+const serviceCards = document.querySelectorAll('.service-card');
+
+serviceCards.forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('tapped');
+  });
+});
+
