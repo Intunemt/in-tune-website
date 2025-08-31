@@ -76,7 +76,6 @@ section {
   padding-top: 80px;
   scroll-snap-align: start;
   box-sizing: border-box;
-  border: dashed red;
 }
 
 section > * + * {
