@@ -283,19 +283,28 @@ nav a:hover {
 }
 
 #hero {
-  position: relative;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  /* stack subheading on top, then row underneath */
   align-items: center;
   justify-content: center;
   text-align: center;
+  gap: 2rem; /* spacing between subheading and row */
 }
 
   @keyframes rainbowShift {
   0% {background-position: 0% 50%;}
   50% {background-position: 100% 50%;}
   100% {background-position: 0% 50%;}
+}
+
+.hero-subheading {
+  text-align: center;
+  font-size: 2rem;
+  color: #3A2A5D;
+  line-height: 1.4;
+  margin: 0 auto;
+  max-width: 900px;
 }
 
 .hero-content {
@@ -305,51 +314,35 @@ nav a:hover {
   align-items: center;
   padding: 2rem;
   max-width: 90%;
-  height: 100%;
+  width: 100%;
+  gap: 2rem;
 }
 
 .hero-left {
   flex: 0 0 60%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 1rem;
-  text-align: center;
 }
 
 .hero-right {
   flex: 0 0 40%;
   display: flex;
-  justify-content: center;
   align-items: center;
-}
-
-.hero-spacer {
-  flex: 1;                 /* pushes the subheading to the bottom */
+  justify-content: center;
 }
 
 .hero-logo {
   width: 100%;
   max-width: 600px;
   height: auto;
-  margin-bottom: 1rem;
 }
 
 .hero-heading {
-  font-size: 2 rem;        /* adjust to taste */
+  font-size: 2rem;
   color: #3A2A5D;
   margin: 0;
-  font-weight: 600;
-}
-
-.hero-subheading {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #3A2A5D;
-  opacity: 0.7;
-  line-height: 1.4;
-  margin: 0;
+  font-weight: 400;
+  opacity: 0.75;
 }
 
 @media (max-width: 768px) {
@@ -360,20 +353,16 @@ nav a:hover {
 
   .hero-left, .hero-right {
     flex: 1 1 100%;
-    align-items: center;
-  }
-
-  .hero-logo {
-    max-width: 600px;
   }
 
   .hero-heading {
     font-size: 1.5rem;
-    padding-bottom: 2rem;
+    margin-top: 1rem;
   }
 
   .hero-subheading {
     font-size: 1.2rem;
+    padding: 0 1rem;
   }
 }
 
