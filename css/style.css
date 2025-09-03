@@ -82,34 +82,6 @@ section > * + * {
   margin-top: 1.5rem;
 }
 
-#hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-  @keyframes rainbowShift {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* main content centered */
-  align-items: center;
-  height: 100%;
-}
-
-.hero-spacer {
-  flex: 1;                 /* pushes the subheading to the bottom */
-}
-
 header {
   position: fixed;
   top: 0;
@@ -133,36 +105,6 @@ header {
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-}
-
-.hero-logo {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  margin-bottom: 1rem;
-}
-
-.hero-heading {
-  font-size: 2 rem;        /* adjust to taste */
-  color: #3A2A5D;
-  margin: 0;
-  font-weight: 600;
-}
-
-.hero-subheading {
-  position: absolute;
-  bottom: 4rem;             /* distance from bottom of viewport */
-  width: 100%;
-  text-align: center;
-  font-size: 1.2rem;
-  color: #3A2A5D;
-  opacity: 0.7;
-}
-
-@media (max-width: 768px) {
-  .hero-logo {
-    max-width: 600px;
-  }
 }
 
 .logo-container {
@@ -340,6 +282,101 @@ nav a:hover {
   }
 }
 
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+  @keyframes rainbowShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  max-width: 90%;
+  height: 100%;
+}
+
+.hero-left {
+  flex: 0 0 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.hero-right {
+  flex: 0 0 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-spacer {
+  flex: 1;                 /* pushes the subheading to the bottom */
+}
+
+.hero-logo {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.hero-heading {
+  font-size: 2 rem;        /* adjust to taste */
+  color: #3A2A5D;
+  margin: 0;
+  font-weight: 600;
+}
+
+.hero-subheading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #3A2A5D;
+  opacity: 0.7;
+  line-height: 1.4;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-left, .hero-right {
+    flex: 1 1 100%;
+    align-items: center;
+  }
+
+  .hero-logo {
+    max-width: 600px;
+  }
+
+  .hero-heading {
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .hero-subheading {
+    font-size: 1.2rem;
+  }
+}
+
 .services-main {
   display: flex;
   gap: 2rem;
@@ -354,6 +391,7 @@ nav a:hover {
   display: flex;
   justify-content: center;
   min-height: 500px;
+  padding-left: 1rem;
 }
 
 .services-image img {
@@ -379,6 +417,7 @@ nav a:hover {
   display: flex;
   gap: 1.5rem;
   width: 100%;
+  padding-right: 1rem;
 }
 
 .services-subgrid.wide-cards .service-card {
@@ -526,13 +565,13 @@ nav a:hover {
 }
 
 #meet {
-  min-height: 100vh; /* full viewport height */
+  min-height: 100vh; 
   display: flex;
   flex-direction: column;
-  justify-content: center; /* vertical center for the whole section */
+  justify-content: center; 
   align-items: stretch;
-  padding: 6rem 2rem 3rem; /* top & bottom spacing for breathing room */
-  scroll-snap-align: start; /* preserve scroll snapping */
+  padding: 6rem 2rem 3rem;
+  scroll-snap-align: start; 
 }
 
 .meet-container {
@@ -547,13 +586,13 @@ nav a:hover {
   flex-direction: row;
   gap: 2rem;
   width: 100%;
-  align-items: center; /* vertical center of image + text */
+  align-items: center; 
 }
 
 .meet-image {
-  flex: 1 1 50%;        /* left column 50% */
-  display: flex;         /* make it a flex container */
-  align-items: center;   /* vertical centering */
+  flex: 1 1 50%;        
+  display: flex;         
+  align-items: center;  
   justify-content: center;
 }
 
@@ -593,7 +632,7 @@ nav a:hover {
 .mission-vision-cards .mv-card {
   flex: 1 1 45%; 
   min-width: 300px;
-  height: 200px;
+  height: 300px;
   background: #4b2c61;
   color: #FBF6EC;
   text-align: center;
@@ -649,7 +688,7 @@ nav a:hover {
 
 .grid-wrapper {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
@@ -766,7 +805,7 @@ nav a:hover {
   opacity: 1;
   transform: translateY(0px);
   transition: all 0.8s ease;
-  max-width: 900px;      
+  max-width: 1000px;      
   margin: 0 auto;        
   padding: 2rem 1.5rem;      
   box-sizing: border-box;
