@@ -1,27 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const logo = document.querySelector(".nav-logo"); // your logo element
-  const hero = document.querySelector("#hero");      // your hero section
+  const navLogo = document.querySelector(".nav-logo");
 
-  if (logo && hero) {
-    // Set initial state
-    logo.classList.remove("visible");
+  if (document.body.classList.contains("home-page")) {
+    // Only run hide/show on homepage
+    const hero = document.querySelector("#hero");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Hero is in view → hide logo
-            logo.classList.remove("visible");
-          } else {
-            // Hero is out of view → show logo
-            logo.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.5 } // triggers as soon as any part of hero leaves viewport
-    );
+    if (navLogo && hero) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              navLogo.style.opacity = "0"; // hide when hero is visible
+            } else {
+              navLogo.style.opacity = "1"; // show after hero
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
 
-    observer.observe(hero);
+      observer.observe(hero);
+    }
+  } else {
+    // On all other pages, just show the logo
+    if (navLogo) {
+      navLogo.style.opacity = "1";
+    }
   }
 });
 

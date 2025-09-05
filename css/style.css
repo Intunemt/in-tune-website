@@ -216,11 +216,11 @@ html {
 }
 
 .nav-wrapper {
-  flex: 1;
   display: flex;
-  justify-content: space-between; 
+  justify-content: center; 
   align-items: center; 
   gap: 2rem;
+  width: 100%;
 }
 
 nav {
@@ -249,13 +249,56 @@ nav a:hover {
   color: #3A2A5D;
 }
 
-.nav-left, .nav-right {
+.nav-left, 
+.nav-right {
+  flex: 1;
   display: flex;
   gap: 2rem;
 }
 
-.nav-logo { opacity: 0; transition: opacity 0.3s ease; }
+.nav-left {
+  justify-content: flex-end;
+}
+
+.nav-right {
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem
+}
+
+.nav-logo { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; 
+  transition: ease;
+}
+
 .nav-logo.visible { opacity: 1; }
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 9999px; /* pill shape */
+  text-decoration: none;
+  font-weight: 600;
+  background: #3A2A5D;
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #8F8389;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 
 @media (max-width: 768px) {
   .hamburger { display: block; }
@@ -299,17 +342,16 @@ nav a:hover {
 }
 
 .hero-subheading {
-  text-align: center;
-  font-size: 2rem;
   color: #3A2A5D;
-  line-height: 1.4;
-  margin: 0 auto;
-  max-width: 900px;
+  margin: 0;
+  font-weight: 500;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  opacity: .9;
 }
 
 .hero-content {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 2rem;
@@ -319,16 +361,20 @@ nav a:hover {
 }
 
 .hero-left {
-  flex: 0 0 60%;
+  flex: 0 0 50%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  text-align: center;
 }
 
 .hero-right {
-  flex: 0 0 40%;
+  flex: 0 0 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
 }
 
 .hero-logo {
@@ -338,11 +384,12 @@ nav a:hover {
 }
 
 .hero-heading {
+  text-align: center;
   font-size: 2rem;
   color: #3A2A5D;
-  margin: 0;
-  font-weight: 400;
-  opacity: 0.75;
+  line-height: 1.4;
+  margin: 0 auto;
+  max-width: 900px;
 }
 
 @media (max-width: 768px) {
@@ -919,6 +966,25 @@ nav a:hover {
   .contact-image img {
     max-width: 100%;
   }
+}
+
+.services-page {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Background image only */
+.services-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../images/pictures/hero_background.jpg') no-repeat center center;
+  background-size: cover;
+  z-index: 0; /* image sits behind content */
+  background-attachment: fixed;
 }
 
 footer {
