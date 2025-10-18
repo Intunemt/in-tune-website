@@ -21,7 +21,6 @@
 
 body {
   font-family: 'Quicksand', sans-serif;
-  font-size: 1rem;
   line-height: 1.6;
   background-color: #FBF6EC;
   color: #3A2A5D;
@@ -413,73 +412,78 @@ nav a:hover {
   }
 }
 
-.services-main {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  margin-bottom: 0;
-}
-
-.services-image {
-  flex: 1 1 50%;
-  max-width: 50%;
-  display: flex;
-  justify-content: center;
-  min-height: 500px;
-  padding-left: 1rem;
-}
-
-.services-image img {
+.services-section {
   width: 100%;
-  height: 100%;
-  border-radius: 12px;
-}
-
-.services-text {
-  flex: 1 1 50%;
-  max-width: 50%;
+  padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
 }
 
-#also-offering {
-  margin-top: 2rem;
-  margin-bottom: 0;
+.services-heading {
+  align-self: flex-start;
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: #FBF6EC;
+  margin-bottom: 1.5rem;
 }
 
-.services-subgrid.wide-cards {
+/* === Main Grid === */
+.services-grid {
   display: flex;
-  gap: 1.5rem;
+  flex-direction: column;
   width: 100%;
-  padding-right: 1rem;
+  max-width: 1200px;
+  gap: 2rem;
 }
 
-.services-subgrid.wide-cards .service-card {
-  flex: 1 1 50%;
-  position: relative;
+/* === Top (Full-Width) Card === */
+.services-card.large {
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
   overflow: hidden;
-  border-radius: 12px;
-  height: 250px;
-  cursor: pointer;
-}
-
-.service-card {
-  flex: 1 1 50%;
   position: relative;
-  overflow: visible;
-  border-radius: 12px;
-  height: 250px;
   cursor: pointer;
-  transition: box-shadwo 0.3s ease-in-out;
 }
 
-.service-card:hover {
-  box-shadow: 0 0 14px rgba(58,42,93,0.4), 0 0 24px rgba(58,42,93,0.2);
+/* === Two Half-Width Cards === */
+.services-row {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
 }
 
-.card-front {
+.services-row .services-card {
+  flex: 1 1 50%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+/* === Shared Card Styles === */
+.services-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.services-card:hover {
+  box-shadow: 0 0 14px rgba(58, 42, 93, 0.4), 0 0 24px rgba(58, 42, 93, 0.2);
+}
+
+/* Inner container */
+.services-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Front --- */
+.services-card-front {
   position: absolute;
   top: 0;
   left: 0;
@@ -491,16 +495,28 @@ nav a:hover {
   transition: transform 0.5s ease-in-out;
   background-size: cover;
   background-position: center;
-  padding: 1rem;
   color: #fff;
   font-family: 'Cinzel', serif;
-  font-size: 1.5rem;
   text-align: center;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
   z-index: 2;
 }
 
-.card-back {
+.services-card-front, 
+.services-card-front * {
+  color: #fff !important;
+}
+
+.services-card.large .services-card-front h2 {
+  font-size: 2.5rem;
+}
+
+.services-row .services-card .services-card-front h2 {
+  font-size: 1.75rem;
+}
+
+/* --- Back --- */
+.services-card-back {
   position: absolute;
   top: 0;
   left: 0;
@@ -509,95 +525,53 @@ nav a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.5s ease-in-out;
-  background-color: #FBF6EC;
-  color: #3A2A5D;
   flex-direction: column;
   padding: 1rem;
   text-align: center;
-  z-index: 2;
-  transform: translateY(100%);
-  border: 2px solid transparent; 
+  background-color: #FBF6EC;
+  color: #3A2A5D;
+  border: 2px solid transparent;
   border-radius: 8px;
+
+  /* start hidden under the front */
+  transform: translateY(100%);
+  transition: transform 0.5s ease-in-out;
+  z-index: 1;
+
+  font-size: 1.15rem;
 }
 
-.service-card:hover .card-front {
+/* slide-up on hover */
+.services-card:hover .services-card-front {
   transform: translateY(-100%);
 }
 
-.service-card:hover .card-back {
+.services-card:hover .services-card-back {
   transform: translateY(0);
-  bottom: 0;
 }
 
-.card-back h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+.services-card-back h2 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
 }
 
-.card-back p {
-  font-size: 0.95rem;
-  line-height: 1.4;
+.services-card-back p {
+  font-size: 1.05rem;
+  line-height: 1.6;
   margin-bottom: 1rem;
 }
 
-.card-back .learn-more-btn {
+.services-card-back .learn-more-btn {
+  font-size: 1rem;
   text-decoration: none;
   color: #8F8389;
   font-weight: 600;
 }
 
-@media (max-width: 900px) {
-  .services-main {
-    flex-direction: column;
-  }
-
-  .services-image,
-  .services-text {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-
-  .services-subgrid.wide-cards {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .services-subgrid.wide-cards .service-card {
-    flex: 1 1 100%;
-  }
-
-  .service-card:hover .card-front {
-    transform: translateY(-100%);
-  }
-  .service-card:hover .card-back {
-    transform: translateY(0);
-  }
-
-  .service-card.tapped .card-front {
-    transform: translateY(-100%);
-  }
-
-  .service-card.tapped .card-back {
-    transform: translateY(0);
-  }
-
-  .card-back h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .card-back p {
-    font-size: 0.95rem;
-    line-height: 1.4;
-    margin-bottom: 1rem;
-  }
-
-  .card-back .learn-more-btn {
-    text-decoration: none;
-    color: #8F8389;
-    font-weight: 600;
-  }
+/* large-card override */
+.services-card.large .services-card-back h2 {
+  font-size: 2.5rem;
 }
 
 #meet {
@@ -712,23 +686,35 @@ nav a:hover {
   }
 }
 
-.why-music-therapy {
+.why-music-therapy-section {
   background-color: #fbf6ec;
   padding: 4rem 2rem;
   text-align: center;
 }
 
-.card-column {
-  flex: 2;
+.why-music-therapy-section .card-container {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 0.8s ease;
+  max-width: 1000px;      
+  margin: 0 auto;        
+  padding: 2rem 1.5rem;      
+  box-sizing: border-box;
 }
 
-.grid-wrapper {
+.why-music-therapy-section .full-span {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.why-music-therapy-section .grid-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
-.card { 
+/* ================= Individual Cards ================= */
+.why-music-therapy-card { 
   width: 100%;
   box-sizing: border-box;     
   border: 1px solid rgba(58,42,93, 0.1);  
@@ -744,25 +730,7 @@ nav a:hover {
   text-align: center;
 }
 
-.side-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-  border-radius: 0;
-}
-
-@keyframes breathe {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.015);
-  }
-}
-
-.card.rainbow-card {
+.why-music-therapy-card.rainbow-card {
   background: linear-gradient(
     135deg,
     #ffdce5,
@@ -777,133 +745,65 @@ nav a:hover {
   animation: rainbowShift 30s ease infinite;
   border: 1px solid #3A2A5D;
   padding: 2rem;
-  color:#1a0f1f;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
+  color: #1a0f1f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.card:hover {
+/* ================= Card Hover Effects ================= */
+.why-music-therapy-card:hover {
   box-shadow: 0 0 14px rgba(58,42,93, 0.4), 0 0 24px rgba(58,42,93, 0.2);
   transform: scale(1.025);
   border-color: rgba(58,42,93, 0.3);
 }
 
-.card-title {
+/* ================= Titles & Descriptions ================= */
+.why-music-therapy-title {
   font-family: 'Cinzel', serif;
   font-size: 1.2rem;
   margin: 0;
   transform: translateY(0);
   transition: transform 0.3s ease;
+  text-align: center;
 }
 
-.card-description {
+.why-music-therapy-description {
   font-family: 'Quicksand', sans-serif;
   font-size: 0.9rem;
   margin-top: 1rem;
   opacity: 0;
   transform: translateY(10px);
   transition: all 0.3s ease;
-}
-
-.card-title,
-.card-description {
   text-align: center;
 }
 
-.card:hover .card-title {
+.why-music-therapy-card:hover .why-music-therapy-title {
   transform: translateY(-10px);
 }
 
-.card:hover .card-description {
+.why-music-therapy-card:hover .why-music-therapy-description {
   opacity: 1;
   transform: translateY(0); 
 }
 
-@media (max-width: 768px) {
-  .two-column-layout {
-    flex-direction: column;
+/* ================= Animations ================= */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
   }
+  50% {
+    transform: scale(1.015);
+  }
+}
 
-  .image-column {
-    order: -1;
-    margin-bottom: 2rem;
-  }
-  
-  .grid-wrapper {
+/* ================= Responsive Layout ================= */
+@media (max-width: 768px) {
+  .why-music-therapy-section .grid-wrapper {
     grid-template-columns: 1fr;
   }
 
-  .card {
+  .why-music-therapy-card {
     grid-column: span 1;
   }
-}
-
-.card-container {
-  opacity: 1;
-  transform: translateY(0px);
-  transition: all 0.8s ease;
-  max-width: 1000px;      
-  margin: 0 auto;        
-  padding: 2rem 1.5rem;      
-  box-sizing: border-box;
-}
-
-.full-span {
-  width: 100%;
-  margin-bottom: 2rem;
-}
-
-.card-front {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #FBF6EC;
-  padding: 1rem;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-  transition: transform 0.4s ease;
-  border-radius: 12px;
-}
-
-.card-front h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: white;
-  text-align: center;
-}
-
-.card-back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #FBF6EC; /* Match your site’s background */
-  color: #3A2A5D;
-  width: 100%;
-  height: 100%;
-  padding: 1.5rem;
-  z-index: 1;
-  transform: translateY(100%);
-  align-items: center;
-  transition: transform 0.4s ease;
-  text-align: center;
-  border-radius: 12px;
-}
-
-.card-back h2 {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
-}
-
-.card-back p {
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
-  line-height: 1.4;
 }
 
 .contact-section {
