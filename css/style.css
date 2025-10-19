@@ -62,18 +62,16 @@ blockquote {
 }
 
 main {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 100vh;
 }
 
 section {
-  min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 80px;
-  scroll-snap-align: start;
+  padding: 3rem 2rem; /* reduced vertical space */
   box-sizing: border-box;
 }
 
@@ -220,13 +218,10 @@ html {
   align-items: center; 
   gap: 2rem;
   width: 100%;
+  position: relative;
 }
 
-nav {
-  display: flex;
-  gap: 2rem;
-}
-
+/* Desktop nav links */
 nav a {
   font-family: 'Cinzel', serif;
   font-weight: 600;
@@ -239,8 +234,12 @@ nav a:hover {
   color: #8F8389;
 }
 
-.nav-toggle { display: none; }
+/* Hamburger toggle hidden on desktop */
+.nav-toggle {
+  display: none;
+}
 
+/* Hamburger icon for mobile */
 .hamburger {
   display: none;
   font-size: 2rem;
@@ -248,6 +247,7 @@ nav a:hover {
   color: #3A2A5D;
 }
 
+/* Left/right link containers */
 .nav-left, 
 .nav-right {
   flex: 1;
@@ -255,41 +255,27 @@ nav a:hover {
   gap: 2rem;
 }
 
-.nav-left {
-  justify-content: flex-end;
-}
+.nav-left { justify-content: flex-end; }
+.nav-right { justify-content: flex-start; align-items: center; gap: 1.5rem; }
 
-.nav-right {
-  justify-content: flex-start;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem
-}
-
+/* Center logo */
 .nav-logo { 
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0; 
-  transition: ease;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
-.nav-logo.visible { opacity: 1; }
-
-.nav-menu {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-}
-
+/* Nav button style */
 .nav-btn {
   display: inline-block;
   padding: 0.6rem 1.2rem;
-  border-radius: 9999px; /* pill shape */
+  border-radius: 9999px;
   text-decoration: none;
   font-weight: 600;
   background: #3A2A5D;
-  color: #FFFFFF;
+  color: #fff;
   transition: all 0.3s ease;
 }
 
@@ -299,6 +285,7 @@ nav a:hover {
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
+/* === Mobile Styles === */
 @media (max-width: 768px) {
   .hamburger { display: block; }
 
@@ -310,34 +297,31 @@ nav a:hover {
     top: 100%;
     left: 0;
     width: 100%;
-    padding: 1rem;
+    padding: 1rem 0;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 999;
   }
 
+  /* Show nav when toggle checked */
   .nav-toggle:checked + .hamburger + .nav-wrapper {
     display: flex;
   }
 
   nav a {
     margin: 0.5rem 0;
+    text-align: center;
     color: #3A2A5D;
   }
-}
 
-#hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;  /* stack subheading on top, then row underneath */
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 2rem; /* spacing between subheading and row */
-}
+  .nav-left, .nav-right {
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+  }
 
-  @keyframes rainbowShift {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+  .nav-logo {
+    margin: 1rem 0;
+  }
 }
 
 .hero-subheading {
@@ -572,6 +556,89 @@ nav a:hover {
 /* large-card override */
 .services-card.large .services-card-back h2 {
   font-size: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    max-width: 100%;
+    gap: 1.5rem;
+  }
+
+  .services-row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .services-row .services-card,
+  .services-card.large {
+    flex: 1 1 100%;
+    width: 100%;
+    min-height: auto;
+    height: auto;
+  }
+
+  .services-card-inner {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* --- FRONT (image + title) --- */
+  .services-card-front {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+  }
+
+  .services-card-front h2 {
+    font-size: 1.75rem;
+    padding: 0 1rem;
+  }
+
+  /* --- BACK (text content) --- */
+  .services-card-back {
+    position: relative;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.25rem;
+    text-align: center;
+    background-color: #FBF6EC;
+    color: #3A2A5D;
+    border-radius: 0 0 12px 12px;
+    font-size: 1rem;
+  }
+
+  .services-card-back h2 {
+    display: none;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .services-card-back p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .services-card:hover .services-card-front,
+  .services-card:hover .services-card-back {
+    transform: none;
+  }
+
+  .services-card:hover {
+    box-shadow: none;
+  }
 }
 
 #meet {
@@ -868,28 +935,103 @@ nav a:hover {
   }
 }
 
-.services-page::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
+.services-page-music-therapy {
   width: 100%;
-  height: 100%;
-  background: url('/images/pictures/hero_background.jpg') no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
-  z-index: -1; /* push it behind content */
+  padding: 6rem 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
-/* Now the content will appear above the fixed background */
-.services-page main {
-  min-height: 100vh;
-  margin-top: 100px; 
-  position: relative; /* establishes stacking context */
-  z-index: 0;         /* above the ::before which is -1 */
-  padding: 2rem;
+.services-page-columns {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  align-items: center;
+}
+
+/* Left column image */
+.services-page-image {
+  flex: 1 1 50%; /* always 50% until mobile */
+  box-sizing: border-box;
+}
+
+.services-page-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Right column text */
+.services-page-text {
+  flex: 1 1 50%; /* always 50% until mobile */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.services-page-text h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
   color: #3A2A5D;
-  scroll-margin-top: 100px;
+}
+
+.services-page-text hr {
+  border: 0;
+  height: 2px;
+  background: #3A2A5D;
+  width: 50px;
+  margin: 0 0 1rem 0;
+  border-radius: 2px;
+}
+
+.services-page-text p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #3A2A5D;
+}
+
+.services-subheading {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: #3A2A5D;
+  margin: 0rem 0 1rem 0;
+  align-self: flex-start; /* aligns with the left edge of the grid */
+}
+
+/* ================= Mobile Responsive ================= */
+@media (max-width: 768px) {
+  .services-page-columns {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .services-page-image,
+  .services-page-text {
+    flex: 1 1 100%; /* full width for stacking */
+  }
+
+  .services-page-text h2 {
+    font-size: 1.75rem;
+  }
+
+  .services-page-text hr {
+    margin: 1rem auto;
+  }
+
+  .services-page-text p {
+    font-size: 0.95rem;
+  }
+
+   .services-page-music-therapy {
+    padding-top: 4rem;
+  }
 }
 
 footer {
