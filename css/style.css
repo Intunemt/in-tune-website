@@ -281,6 +281,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 150px;
 }
 
 /* Hero Content */
@@ -581,6 +582,159 @@ html {
     box-shadow: none;
   }
 }
+/* ---------- Problem Section ---------- */
+.problem-section {
+  padding: 4rem 1rem;
+  background: transparent;
+  color: #3A2A5D;
+}
+
+.container { max-width: 1200px; margin: 0 auto; }
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.section-lead {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  font-family: 'Quicksand', sans-serif;
+  color: #6b5c78;
+}
+
+/* Grid */
+.problem-grid {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  align-items: end; /* so the stagger looks nice */
+  padding: 1rem 0;
+  flex-wrap: wrap;
+}
+
+/* Card sizing: width responsive; aspect-ratio gives height = 2 * width */
+.problem-card {
+  flex: 1;                     /* allow them to stretch evenly */
+  min-width: 260px;            /* prevents getting too narrow */
+  max-width: 360px;            /* keeps them tidy on huge screens */
+  aspect-ratio: 1 / 1.6;       /* wider than before (height = 1.6x width) */
+  perspective: 800px;
+}
+
+/* Parallelogram outer shape (skewed) */
+.parallelogram {
+  height: 100%;
+  width: 100%;
+  transform: skewY(-12deg); /* slant the box */
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(18,18,30,0.08);
+  transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms;
+  background: linear-gradient(135deg, #3A2A5D, #53465a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Content counter-skew so text is upright */
+.card-inner {
+  transform: skewY(12deg); /* cancels the parent skew */
+  padding: 1.2rem;
+  text-align: left;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* TYPOGRAPHY — unified, correct selectors */
+.card-inner h3 {
+  margin: 0 0 1rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;     /* matches MV card headings */
+  color: #3A2A5D;
+  text-align: center;
+}
+
+.card-inner p {
+  line-height: 1.5;
+  font-size: 1rem;       /* matches MV card body text */
+  font-family: 'Quicksand', sans-serif;
+  color: #53465a;
+  text-align: center;
+}
+
+/* Hover / focus lift */
+.problem-card:focus .parallelogram,
+.problem-card:hover .parallelogram {
+  transform: translateY(-6px) skewY(-12deg);
+  box-shadow: 0 24px 60px rgba(18,18,30,0.16);
+}
+
+/* Make sure counter-skew remains after hover */
+.problem-card:focus .card-inner,
+.problem-card:hover .card-inner {
+  transform: skewY(12deg);
+}
+
+.problem-card h3 {
+  font-size: 1.4rem; /* same visual weight as MV h2 but slightly smaller */
+  margin-bottom: 1rem;
+  font-family: 'Cinzel', serif;
+  color: #FBF6EC;
+  text-align: center;
+}
+
+.problem-card p {
+  line-height: 1.5;
+  font-size: 1rem; /* SAME as MV cards */
+  font-family: 'Quicksand', sans-serif;
+  color: #FBF6EC;
+  text-align: center;
+}
+
+/* Mobile: stack vertically and remove extreme offsets */
+@media (max-width: 900px) {
+  .problem-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  .problem-card {
+    width: 100%;
+    max-width: 500px;        /* good size on mobile */
+    height: 260px;           /* wider than tall */
+    aspect-ratio: unset;     /* overrides the tall ratio */
+    transform: none;   
+    transition: none;      /* remove parallelogram shape */
+  }
+
+  .parallelogram,
+  .card-inner {
+    transform: none;         /* ensure FULL removal of skewing */
+  }
+    .parallelogram,
+  .parallelogram::before,
+  .card-inner {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* remove hover effects that cause movement */
+  .problem-card:hover,
+  .parallelogram:hover,
+  .card-inner:hover {
+    transform: none !important;
+  }
+}
 
 #meet {
   min-height: 100vh; 
@@ -651,7 +805,7 @@ html {
   flex: 1 1 45%; 
   min-width: 300px;
   height: 300px;
-  background: #4b2c61;
+  background: linear-gradient(135deg, #3A2A5D, #53465a);
   color: #FBF6EC;
   text-align: center;
   padding: 1rem;
@@ -975,9 +1129,164 @@ html {
   }
 }
 
-footer {
-  text-align: center;
-  padding: 2rem;
+/* Footer Section */
+.site-footer {
+  width: 100%;
+  font-family: 'Cinzel', serif;
+  color: #3A2A5D;
+  background: #FBF6EC; /* default background above bottom section */
+  padding: 3rem 1rem 0 1rem;
+  box-sizing: border-box;
+}
+
+/* CTA block inside container */
+.footer-cta-logo {
+  display: flex;
+  flex-direction: row; /* horizontal layout */
+  align-items: center;
+  justify-content: space-between; /* CTA left, logo right */
+  gap: 4rem;
+  padding: 2.5rem 2rem;
+  margin: 0 auto 3rem auto; /* center container and spacing below */
+  max-width: 900px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  background: #FBF6EC; /* same as page background */
+}
+
+/* CTA block */
+.footer-cta-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* left-align CTA text and button */
+  gap: 1rem;
+}
+
+/* CTA text and button */
+.footer-cta-text {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #3A2A5D;
+}
+
+.footer-cta-btn {
+  padding: 0.8rem 2rem;
+  background: #3A2A5D;
+  color: #fff;
+  border-radius: 9999px;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-cta-btn:hover {
+  background: #8F8389;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Logo block */
+.footer-logo-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-logo-img {
+  height: 100px;
+  width: auto;
+}
+
+/* Navigation row below CTA/logo box */
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-nav a {
+  color: #3A2A5D;
+  font-family: 'Cinzel', serif;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+  color: #8F8389;
+}
+
+/* Bottom section */
+.footer-bottom {
+  background: #3A2A5D;
+  color: #FBF6EC;
+  display: flex;
+  justify-content: space-between; /* copyright left, links right */
+  align-items: center;
+  padding: 1rem 2rem;
   font-size: 0.9rem;
-  color: #6c5e7f;
+  flex-wrap: wrap; /* in case screen is very narrow */
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-bottom a {
+  color: #FBF6EC;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .footer-cta-logo {
+    flex-direction: column; /* stack CTA over logo */
+    align-items: center;    /* center everything horizontally */
+    gap: 2rem;              /* more breathing room */
+    padding: 2rem 1rem;
+    max-width: 95%;
+    text-align: center;     /* center CTA text */
+  }
+
+  .footer-cta-block {
+    align-items: center;    /* center CTA text and button */
+  }
+
+  .footer-cta-text {
+    font-size: 1.4rem;
+  }
+
+  .footer-cta-btn {
+    padding: 0.6rem 1.5rem;
+  }
+
+  .footer-logo-img {
+    height: 70px;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.85rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .footer-bottom-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+  }
 }
