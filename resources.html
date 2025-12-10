@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog | In Tune Music Therapy</title>
+  <title>Resources | In Tune Music Therapy</title>
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Quicksand&display=swap" rel="stylesheet" />
   <link rel="icon" href="/images/logo/favicon_vector.svg" type="image/svg+xml" />
@@ -11,32 +11,67 @@
 
 </head>
 <body>
+  <header id="site-header" class="site-header">
+    <!-- Mobile toggle -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="hamburger">&#9776;</label>
 
-  <header>
-    <a href="/" class="logo-link">
-      <div class="logo-container">
-        <img src="images/logo/lotus_bottomleaf_nobackground.svg" alt="In Tune Logo" class="default" />
-        <img src="images/logo/intune_logo_words.svg" alt="In Tune Logo Hover" class="hover" />
-      </div>
+    <!-- Logo (left) -->
+    <a href="index.html" class="logo-link">
+      <img src="images/logo/lotus_bottomleaf_nobackground.svg"
+          alt="In Tune Music Therapy Logo"
+          class="logo-img" />
+      <!-- Add SVG next to the logo -->
+      <img src="images/logo/Intune_logo_words_better.svg" 
+          alt="Decorative Icon" 
+          class="logo-icon" />
     </a>
 
-    <div class="nav-wrapper">
-      <nav>
-        <a href="/">Home</a>
-        <a href="/#services">Services</a>
-        <a href="/#meet">Meet Makenzie</a>
-        <a href="/#why">Why Music Therapy</a>
-        <a href="blog.html">Blog</a>
-        <a href="/#contact">Contact</a>
+      <!-- Navigation (right) -->
+      <nav class="nav-wrapper">
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html" class="nav-btn">Get Started</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
   <main><h1>Blog</h1></main>
 
-  <footer>
-    &copy; 2025 In Tune Music Therapy. All rights reserved.
-  </footer>
+  <footer class="site-footer">
+    <div class="footer-cta-logo">
+      <div class="footer-cta-block">
+        <p class="footer-cta-text">Ready to start your journey?</p>
+        <a href="contact.html" class="footer-cta-btn">Get Started</a>
+      </div>
+      <div class="footer-logo-block">
+         <a href="index.html" class="logo-link">
+          <img src="images/logo/lotus_bottomleaf_nobackground.svg" alt="In Tune Music Therapy Logo" class="logo-img">
+          <img src="images/logo/Intune_logo_words_better.svg" alt="In Tune Music Therapy Words" class="logo-icon">
+        </a>
+      </div>
+    </div>
 
+    <div class="footer-nav">
+      <a href="services.html">Therapy Services</a>
+      <a href="about.html">About Me</a>
+      <a href="cost.html">Cost</a>
+      <a href="professionals.html">For Professionals</a>
+      <a href="contact.html">Therapy Inquiry</a>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        &copy; 2025 In Tune Music Therapy,LLC
+      </div>
+      <div class="footer-bottom-links">
+        <a href="terms.html">Terms of Use</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Legal Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+<script src="js/navigation.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
