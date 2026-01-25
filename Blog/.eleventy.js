@@ -1,8 +1,12 @@
-module.exports = function () {
+module.exports = function(eleventyConfig) {
   return {
     dir: {
-      input: "src",    // where your posts and layouts live
-      output: "_site"  // where Eleventy will generate the HTML
-    }
+      input: "src",
+      output: "_site",
+      includes: "_includes"
+    },
+    templateFormats: ["njk", "html", "md"],
+    htmlTemplateEngine: "njk",
+    markdownTemplateEngine: "njk"
   };
 };
