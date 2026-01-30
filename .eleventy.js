@@ -1,20 +1,31 @@
+const { DateTime } = require("luxon");
+
 module.exports = function(eleventyConfig) {
-  // Passthrough copy
-  eleventyConfig.addPassthroughCopy("assets");
-  eleventyConfig.addPassthroughCopy("css");
-  eleventyConfig.addPassthroughCopy("fonts");
-  eleventyConfig.addPassthroughCopy("images");
-  eleventyConfig.addPassthroughCopy("js");
+  // Pass-through copy for static assets
+  eleventyConfig.addPassthroughCopy("src/css");
+  eleventyConfig.addPassthroughCopy("src/fonts");
+  eleventyConfig.addPassthroughCopy("src/images");
+  eleventyConfig.addPassthroughCopy("src/js");
+
+  // Date filter using Luxon
+  eleventyConfig.addFilter("date", (dateObj, format = "LLLL d, yyyy") => {
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(format);
+  });
+
+  // Blog collection for resources
+  eleventyConfig.addCollection("resources", (collectionApi) => {
+    return collectionApi.getFilteredByGlob("./src/resources/*.md").reverse();
+  });
 
   return {
     dir: {
       input: "src",
-      output: "_site",
-      includes: "../_includes"  // <-- relative from src/
+      includes: "../_includes",
+      output: "_site"
     },
-    templateFormats: ["njk", "html", "md"],
-    htmlTemplateEngine: "njk",
+    templateFormats: ["njk", "md", "html"],
     markdownTemplateEngine: "njk",
-    passthroughFileCopy: true
+    htmlTemplateEngine: "njk",
+    dataTemplateEngine: "njk",
   };
 };
