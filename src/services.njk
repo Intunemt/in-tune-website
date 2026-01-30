@@ -1,0 +1,46 @@
+---
+permalink: "services/index.html"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | In Tune Music Therapy</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Quicksand&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/images/logo/favicon_vector.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="/images/logo/favicon-32.png" sizes="32x32" type="image/png" />
+</head>
+
+<body class="home-page">
+{% include "header.njk" %}
+
+  <main>
+    <section id="music-therapy" class="services-page-music-therapy">
+      <h2>Looking for Supervision or Consulation? Professionals <a href="/professionals/" class="learn-more-btn">Click Here</a></h2>
+      <div class="services-page-columns">
+        <!-- Left column: image -->
+        <div class="services-page-image">
+          <img src="/images/pictures/piano-7253596_1920.jpg" alt="Keyboard representing music therapy" />
+        </div>
+
+        <!-- Right column: text content -->
+        <div class="services-page-text">
+          <h2><b>Music Therapy Services</b></h2>
+          <hr />
+          <p>
+            <b>Individual Music Therapy Sessions</b><br><br>
+            After an assessment session, sessions are 45-50 minutes long focusing on your mental health goals through music therapy techniques such as directed music listening, music making, songwriting and more.  No music experience required. <br>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+{% include "footer.njk" %}
+<script src="js/navigation.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

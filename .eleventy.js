@@ -1,6 +1,5 @@
 module.exports = function(eleventyConfig) {
-
-    // Passthrough copy: single source of truth for assets
+  // Passthrough copy
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("fonts");
@@ -11,10 +10,11 @@ module.exports = function(eleventyConfig) {
     dir: {
       input: "src",
       output: "_site",
-      includes: "_includes"
+      includes: "../_includes"  // <-- relative from src/
     },
     templateFormats: ["njk", "html", "md"],
     htmlTemplateEngine: "njk",
-    markdownTemplateEngine: "njk"
+    markdownTemplateEngine: "njk",
+    passthroughFileCopy: true
   };
 };
