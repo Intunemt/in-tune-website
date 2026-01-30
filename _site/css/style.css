@@ -1,0 +1,1294 @@
+@font-face {
+  font-family: 'Cinzel';
+  src: url('../fonts/Cinzel-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  src: url('../fonts/Cinzel-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  line-height: 1.6;
+  background-color: #FBF6EC;
+  color: #3A2A5D;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cinzel', serif;
+  color: #3A2A5D;
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+p, li {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+}
+
+blockquote {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+}
+
+.serif {
+  font-family: 'Cinzel', serif;
+}
+
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove accidental forced scrollbars */
+* {
+  box-sizing: border-box;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem; /* reduced vertical space */
+  box-sizing: border-box;
+}
+
+section > * + * {
+  margin-top: 1.5rem;
+}
+
+/* HEADER — fixed, animated background, hide on scroll */
+#site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;  
+  background: linear-gradient(
+    135deg,
+    #ffdce5,
+    #ffeacc,
+    #fffccc,
+    #ccf4e2,
+    #cce4ff,
+    #e1ccff,
+    #ffdce5
+  );
+  background-size: 300% 300%;
+  animation: rainbowShift 30s ease infinite;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 1000;
+  transition: transform 0.4s ease;
+}
+
+/* Hide header */
+#site-header.hide-header {
+  transform: translateY(-100%);
+}
+
+@media (max-width: 768px) {
+  #site-header {
+    display: flex;
+    justify-content: space-between; /* logo left, hamburger right */
+    align-items: center;
+    padding: 0 1.5rem;
+  }
+
+  .hamburger {
+    order: 2; /* forces it to the far right */
+  }
+
+  .logo-link {
+    order: 1; /* ensures it stays on the left */
+  }
+
+  /* Nav menu stays full-width under header */
+  .nav-wrapper {
+    width: 100%;
+    right: 0;
+    left: 0;
+  }
+}
+
+/* Logo */
+.logo-link {
+  display: flex;
+  justify-content: center; /* or space-between if needed */
+  align-items: center;
+  gap: 0.5rem; /* space between main logo and SVG */
+  margin: 0 2rem; 
+}
+
+/* Main logo image */
+.logo-img {
+  height: 150px; /* desktop size */
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+}
+
+/* Secondary SVG image */
+.logo-icon {
+  height: 80px; /* desktop size */
+  width: auto;
+}
+
+/* Anchor scroll offset */
+html {
+  scroll-padding-top: 200px;
+}
+
+/* Optional title style */
+.site-title h3 {
+  margin: 0;
+  font-family: 'Cinzel', serif;
+  color: #3A2A5D;
+}
+
+/* MOBILE adjustments */
+@media (max-width: 768px) {
+  .logo-img {
+    max-width: 180px;
+    height: auto;
+  }
+
+  .logo-icon {
+    height: 50px;
+  }
+}
+
+/* Navigation */
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-wrapper a {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  text-decoration: none;
+  color: #3A2A5D;
+  transition: color 0.3s;
+}
+
+.nav-wrapper a:hover {
+  color: #8F8389;
+}
+
+/* Button */
+.nav-btn {
+  padding: 0.6rem 1.2rem;
+  background: #3A2A5D;
+  color: #fff !important;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #8F8389;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #3A2A5D;
+}
+
+/* Mobile layout */
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-wrapper {
+    display: none;
+    flex-direction: column;
+    background: #FBF6EC;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 100%;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .nav-toggle:checked ~ .nav-wrapper {
+    display: flex;
+  }
+
+  .nav-wrapper a {
+    margin: 0.4rem 0;
+    text-align: center;
+  }
+
+  .logo-img {
+    width: 120px;
+  }
+}
+
+/* Prevent anchor links from hiding under header */
+html {
+  scroll-padding-top: 100px;
+}
+
+body {
+  padding-top: 150px; /* match your header height! */
+}
+
+/* Hero Section */
+.hero-section {
+  width: 100%;
+  height: 90vh; /* almost full viewport height */
+  background: url(../images/pictures/hero_background.jpg) no-repeat center center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero Content */
+.hero-content {
+  text-align: center;
+  color: #fff;
+  max-width: 900px;
+  z-index: 2;
+}
+
+.hero-heading {
+  font-family: 'Cinzel', serif;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.hero-subheading {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  color:#3A2A5D
+}
+
+.hero-btn {
+  padding: 0.8rem 2rem;
+  background: #3A2A5D;
+  color: #fff;
+  border-radius: 9999px;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: #8F8389;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .hero-heading {
+    font-size: 2rem;
+  }
+
+  .hero-subheading {
+    font-size: 1.1rem;
+  }
+
+  .hero-btn {
+    padding: 0.6rem 1.5rem;
+  }
+}
+
+.services-section {
+  width: 100%;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.services-heading {
+  align-self: flex-start;
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: #FBF6EC;
+  margin-bottom: 1.5rem;
+}
+
+/* === Main Grid === */
+.services-grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  gap: 2rem;
+}
+
+/* === Top (Full-Width) Card === */
+.services-card.large {
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+/* === Two Half-Width Cards === */
+.services-row {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+}
+
+.services-row .services-card {
+  flex: 1 1 50%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+/* === Shared Card Styles === */
+.services-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.services-card:hover {
+  box-shadow: 0 0 14px rgba(58, 42, 93, 0.4), 0 0 24px rgba(58, 42, 93, 0.2);
+}
+
+/* Inner container */
+.services-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Front --- */
+.services-card-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+
+.services-card-front, 
+.services-card-front * {
+  color: #fff !important;
+}
+
+.services-card.large .services-card-front h2 {
+  font-size: 2.5rem;
+}
+
+.services-row .services-card .services-card-front h2 {
+  font-size: 1.75rem;
+}
+
+/* --- Back --- */
+.services-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  text-align: center;
+  background-color: #FBF6EC;
+  color: #3A2A5D;
+  border: 2px solid transparent;
+  border-radius: 8px;
+
+  /* start hidden under the front */
+  transform: translateY(100%);
+  transition: transform 0.5s ease-in-out;
+  z-index: 1;
+
+  font-size: 1.15rem;
+}
+
+/* slide-up on hover */
+.services-card:hover .services-card-front {
+  transform: translateY(-100%);
+}
+
+.services-card:hover .services-card-back {
+  transform: translateY(0);
+}
+
+.services-card-back h2 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.services-card-back p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.services-card-back .learn-more-btn {
+  font-size: 1rem;
+  text-decoration: none;
+  color: #8F8389;
+  font-weight: 600;
+}
+
+/* large-card override */
+.services-card.large .services-card-back h2 {
+  font-size: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    max-width: 100%;
+    gap: 1.5rem;
+  }
+
+  .services-row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .services-row .services-card,
+  .services-card.large {
+    flex: 1 1 100%;
+    width: 100%;
+    min-height: auto;
+    height: auto;
+  }
+
+  .services-card-inner {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* --- FRONT (image + title) --- */
+  .services-card-front {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+  }
+
+  .services-card-front h2 {
+    font-size: 1.75rem;
+    padding: 0 1rem;
+  }
+
+  /* --- BACK (text content) --- */
+  .services-card-back {
+    position: relative;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.25rem;
+    text-align: center;
+    background-color: #FBF6EC;
+    color: #3A2A5D;
+    border-radius: 0 0 12px 12px;
+    font-size: 1rem;
+  }
+
+  .services-card-back h2 {
+    display: none;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .services-card-back p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .services-card:hover .services-card-front,
+  .services-card:hover .services-card-back {
+    transform: none;
+  }
+
+  .services-card:hover {
+    box-shadow: none;
+  }
+}
+/* ---------- Problem Section ---------- */
+.problem-section {
+  padding: 4rem 1rem;
+  background: transparent;
+  color: #3A2A5D;
+}
+
+.container { max-width: 1200px; margin: 0 auto; }
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.section-lead {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  font-family: 'Quicksand', sans-serif;
+  color: #6b5c78;
+}
+
+/* Grid */
+.problem-grid {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  align-items: end; /* so the stagger looks nice */
+  padding: 1rem 0;
+  flex-wrap: wrap;
+}
+
+/* Card sizing: width responsive; aspect-ratio gives height = 2 * width */
+.problem-card {
+  flex: 1;                     /* allow them to stretch evenly */
+  min-width: 260px;            /* prevents getting too narrow */
+  max-width: 360px;            /* keeps them tidy on huge screens */
+  aspect-ratio: 1 / 1.6;       /* wider than before (height = 1.6x width) */
+  perspective: 800px;
+}
+
+/* Parallelogram outer shape (skewed) */
+.parallelogram {
+  height: 100%;
+  width: 100%;
+  transform: skewY(-12deg); /* slant the box */
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(18,18,30,0.08);
+  transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms;
+  background: linear-gradient(135deg, #3A2A5D, #53465a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Content counter-skew so text is upright */
+.card-inner {
+  transform: skewY(12deg); /* cancels the parent skew */
+  padding: 1.2rem;
+  text-align: left;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* TYPOGRAPHY — unified, correct selectors */
+.card-inner h3 {
+  margin: 0 0 1rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;     /* matches MV card headings */
+  color: #3A2A5D;
+  text-align: center;
+}
+
+.card-inner p {
+  line-height: 1.5;
+  font-size: 1rem;       /* matches MV card body text */
+  font-family: 'Quicksand', sans-serif;
+  color: #53465a;
+  text-align: center;
+}
+
+/* Hover / focus lift */
+.problem-card:focus .parallelogram,
+.problem-card:hover .parallelogram {
+  transform: translateY(-6px) skewY(-12deg);
+  box-shadow: 0 24px 60px rgba(18,18,30,0.16);
+}
+
+/* Make sure counter-skew remains after hover */
+.problem-card:focus .card-inner,
+.problem-card:hover .card-inner {
+  transform: skewY(12deg);
+}
+
+.problem-card h3 {
+  font-size: 1.4rem; /* same visual weight as MV h2 but slightly smaller */
+  margin-bottom: 1rem;
+  font-family: 'Cinzel', serif;
+  color: #FBF6EC;
+  text-align: center;
+}
+
+.problem-card p {
+  line-height: 1.5;
+  font-size: 1rem; /* SAME as MV cards */
+  font-family: 'Quicksand', sans-serif;
+  color: #FBF6EC;
+  text-align: center;
+}
+
+/* Mobile: stack vertically and remove extreme offsets */
+@media (max-width: 900px) {
+  .problem-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  .problem-card {
+    width: 100%;
+    max-width: 500px;        /* good size on mobile */
+    height: 260px;           /* wider than tall */
+    aspect-ratio: unset;     /* overrides the tall ratio */
+    transform: none;   
+    transition: none;      /* remove parallelogram shape */
+  }
+
+  .parallelogram,
+  .card-inner {
+    transform: none;         /* ensure FULL removal of skewing */
+  }
+    .parallelogram,
+  .parallelogram::before,
+  .card-inner {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* remove hover effects that cause movement */
+  .problem-card:hover,
+  .parallelogram:hover,
+  .card-inner:hover {
+    transform: none !important;
+  }
+}
+
+#meet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: stretch;
+  padding: 4rem 2rem 3rem;
+  scroll-snap-align: start; 
+}
+
+.meet-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.meet-columns {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  align-items: center; 
+}
+
+.meet-image {
+  flex: 1 1 50%;        
+  display: flex;         
+  align-items: center;  
+  justify-content: center;
+}
+
+.meet-image img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.meet-text {
+  flex: 1 1 50%; 
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mission-vision-row {
+  display: flex;
+  justify-content: center; /* centers row of cards */
+  gap: 2rem;
+  width: 100%;
+}
+
+.mission-vision-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center; 
+  width: 100%; 
+  padding: 0 2rem;
+}
+
+.mission-vision-cards .mv-card {
+  flex: 1 1 45%; 
+  min-width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #3A2A5D, #53465a);
+  color: #FBF6EC;
+  text-align: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.mission-vision-cards .mv-card h2 {
+  margin-bottom: 1rem;
+  color: #FBF6EC;
+}
+
+.mission-vision-cards .mv-card p {
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+  .meet-columns {
+    flex-direction: column;
+  }
+
+  .meet-image,
+  .meet-text {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .mission-vision-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mission-vision-cards .mv-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+.why-music-therapy-section {
+  background-color: #fbf6ec;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.why-music-therapy-section .card-container {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 0.8s ease;
+  max-width: 1000px;      
+  margin: 0 auto;        
+  padding: 2rem 1.5rem;      
+  box-sizing: border-box;
+}
+
+.why-music-therapy-section .full-span {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.why-music-therapy-section .grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* ================= Individual Cards ================= */
+.why-music-therapy-card { 
+  width: 100%;
+  box-sizing: border-box;     
+  border: 1px solid rgba(58,42,93, 0.1);  
+  border-radius: 0;
+  overflow: hidden;
+  padding: 2rem;
+  color: #3a2a5d;             
+  box-shadow: 0 0 0 transparent;
+  transition: all 0.3s ease;
+  animation: breathe 6s ease-in-out infinite;
+  cursor: pointer;
+  align-items: center;
+  text-align: center;
+}
+
+.why-music-therapy-card.rainbow-card {
+  background: linear-gradient(
+    135deg,
+    #ffdce5,
+    #ffeacc,
+    #fffccc,
+    #ccf4e2,
+    #cce4ff,
+    #e1ccff,
+    #ffdce5
+  );
+  background-size: 300% 300%;
+  animation: rainbowShift 30s ease infinite;
+  border: 1px solid #3A2A5D;
+  padding: 2rem;
+  color: #1a0f1f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ================= Card Hover Effects ================= */
+.why-music-therapy-card:hover {
+  box-shadow: 0 0 14px rgba(58,42,93, 0.4), 0 0 24px rgba(58,42,93, 0.2);
+  transform: scale(1.025);
+  border-color: rgba(58,42,93, 0.3);
+}
+
+/* ================= Titles & Descriptions ================= */
+.why-music-therapy-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  margin: 0;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.why-music-therapy-description {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.why-music-therapy-card:hover .why-music-therapy-title {
+  transform: translateY(-10px);
+}
+
+.why-music-therapy-card:hover .why-music-therapy-description {
+  opacity: 1;
+  transform: translateY(0); 
+}
+
+/* ================= Animations ================= */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.015);
+  }
+}
+
+/* ================= Responsive Layout ================= */
+@media (max-width: 768px) {
+  .why-music-therapy-section .grid-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .why-music-therapy-card {
+    grid-column: span 1;
+  }
+}
+
+.contact-section {
+  padding: 4rem 2rem;
+  background-color: #fbf6ec;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-container {
+  display: flex;
+  max-width: 2000px;
+  width: 100%;
+  gap: 2rem;
+  align-items: center;
+}
+
+.contact-text,
+.contact-image {
+  flex: 1;
+}
+
+.contact-text {
+  color: #3A2A5D;
+}
+
+.contact-text h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact-text p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.contact-link {
+  color: #8F8389;
+  text-decoration: none;
+}
+
+.contact-image img {
+  width: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact-text,
+  .contact-image {
+    width: 100%;
+  }
+
+  .contact-image img {
+    max-width: 100%;
+  }
+}
+
+.services-page-music-therapy {
+  width: 100%;
+  padding: 6rem 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.services-page-columns {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  align-items: center;
+}
+
+/* Left column image */
+.services-page-image {
+  flex: 1 1 50%; /* always 50% until mobile */
+  box-sizing: border-box;
+}
+
+.services-page-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Right column text */
+.services-page-text {
+  flex: 1 1 50%; /* always 50% until mobile */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.services-page-text h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #3A2A5D;
+}
+
+.services-page-text hr {
+  border: 0;
+  height: 2px;
+  background: #3A2A5D;
+  width: 50px;
+  margin: 0 0 1rem 0;
+  border-radius: 2px;
+}
+
+.services-page-text p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #3A2A5D;
+}
+
+.services-subheading {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: #3A2A5D;
+  margin: 0rem 0 1rem 0;
+  align-self: flex-start; /* aligns with the left edge of the grid */
+}
+
+/* ================= Mobile Responsive ================= */
+@media (max-width: 768px) {
+  .services-page-columns {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .services-page-image,
+  .services-page-text {
+    flex: 1 1 100%; /* full width for stacking */
+  }
+
+  .services-page-text h2 {
+    font-size: 1.75rem;
+  }
+
+  .services-page-text hr {
+    margin: 1rem auto;
+  }
+
+  .services-page-text p {
+    font-size: 0.95rem;
+  }
+
+   .services-page-music-therapy {
+    padding-top: 4rem;
+  }
+}
+
+/* Footer Section */
+.site-footer {
+  width: 100%;
+  font-family: 'Cinzel', serif;
+  color: #3A2A5D;
+  background: #FBF6EC; /* default background above bottom section */
+  padding: 3rem 1rem 0 1rem;
+  box-sizing: border-box;
+}
+
+/* CTA block inside container */
+.footer-cta-logo {
+  display: flex;
+  flex-direction: row; /* horizontal layout */
+  align-items: center;
+  justify-content: space-between; /* CTA left, logo right */
+  gap: 4rem;
+  padding: 2.5rem 2rem;
+  margin: 0 auto 3rem auto; /* center container and spacing below */
+  max-width: 900px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  background: #FBF6EC; /* same as page background */
+}
+
+/* CTA block */
+.footer-cta-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* left-align CTA text and button */
+  gap: 1rem;
+}
+
+/* CTA text and button */
+.footer-cta-text {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #3A2A5D;
+}
+
+.footer-cta-btn {
+  padding: 0.8rem 2rem;
+  background: #3A2A5D;
+  color: #fff;
+  border-radius: 9999px;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-cta-btn:hover {
+  background: #8F8389;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Logo block */
+.footer-logo-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-logo-img {
+  height: 100px;
+  width: auto;
+}
+
+/* Navigation row below CTA/logo box */
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-nav a {
+  color: #3A2A5D;
+  font-family: 'Cinzel', serif;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+  color: #8F8389;
+}
+
+/* Bottom section */
+.footer-bottom {
+  background: #3A2A5D;
+  color: #FBF6EC;
+  display: flex;
+  justify-content: space-between; /* copyright left, links right */
+  align-items: center;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  flex-wrap: wrap; /* in case screen is very narrow */
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-bottom a {
+  color: #FBF6EC;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .footer-cta-logo {
+    flex-direction: column; /* stack CTA over logo */
+    align-items: center;    /* center everything horizontally */
+    gap: 2rem;              /* more breathing room */
+    padding: 2rem 1rem;
+    max-width: 95%;
+    text-align: center;     /* center CTA text */
+  }
+
+  .footer-cta-block {
+    align-items: center;    /* center CTA text and button */
+  }
+
+  .footer-cta-text {
+    font-size: 1.4rem;
+  }
+
+  .footer-cta-btn {
+    padding: 0.6rem 1.5rem;
+  }
+
+  .footer-logo-img {
+    height: 70px;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.85rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .footer-bottom-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+  }
+}
