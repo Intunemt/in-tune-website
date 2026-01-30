@@ -86,6 +86,18 @@ section > * + * {
 }
 
 /* HEADER — fixed, animated background, hide on scroll */
+@keyframes rainbowShiftDiagonal {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
 #site-header {
   position: fixed;
   top: 0;
