@@ -2,10 +2,9 @@ const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
   // Pass-through copy for static assets
-  eleventyConfig.addPassthroughCopy("src/css");
-  eleventyConfig.addPassthroughCopy("src/fonts");
-  eleventyConfig.addPassthroughCopy("src/images");
-  eleventyConfig.addPassthroughCopy("src/js");
+  eleventyConfig.addPassthroughCopy("images");
+  eleventyConfig.addPassthroughCopy("css"); 
+  eleventyConfig.addPassthroughCopy("fonts");
 
   // Date filter using Luxon
   eleventyConfig.addFilter("date", (dateObj, format = "LLLL d, yyyy") => {

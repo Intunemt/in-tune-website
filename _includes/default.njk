@@ -7,9 +7,19 @@
 
 {% include "header.njk" %}
 
-<main>
-  {{ content | safe }}
-</main>
+  <main>
+    <section>
+      <div class="container content">
+        <article class="post">
+          {% if title %}
+            <h1 class="post-title">{{ title }}</h1>
+          {% endif %}
+
+          {{ content | safe }}
+        </article>
+      </div>
+    </section>
+  </main>
 
 {% include "footer.njk" %}
 
