@@ -87,22 +87,34 @@ section > * + * {
 /* HEADER — fixed, animated background, hide on scroll */
 @keyframes rainbowShiftDiagonal {
   0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
+    transform: translateX(0);
   }
   100% {
-    background-position: 0% 0%;
+    transform: translateX(33.33%); /* moves across a third of its width for seamless loop */
   }
 }
-
 #site-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 200px;  
+  height: 200px;
+  overflow: hidden; /* important so the pseudo-element doesn’t overflow visibly */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 1000;
+  transition: transform 0.4s ease;
+}
+
+#site-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%; /* start fully to the left */
+  width: 300%;  /* wide enough for smooth looping */
+  height: 100%;
   background: linear-gradient(
     135deg,
     #ffdce5,
@@ -111,17 +123,17 @@ section > * + * {
     #ccf4e2,
     #cce4ff,
     #e1ccff,
-    #ffdce5
+    #ffdce5,
+    #ffeacc,
+    #fffccc,
+    #ccf4e2,
+    #cce4ff,
+    #e1ccff
   );
-  background-size: 300% 300%;
-  animation: rainbowShift 30s ease infinite;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
-  z-index: 1000;
-  transition: transform 0.4s ease;
+  animation: rainbowFlowDiagonal 30s linear infinite;
+  z-index: -1; /* behind header content */
 }
+
 
 #site-header.hide-header {
   transform: translateY(-100%);
