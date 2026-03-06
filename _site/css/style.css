@@ -1387,3 +1387,9 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+.container.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
